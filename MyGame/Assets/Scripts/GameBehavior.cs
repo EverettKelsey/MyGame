@@ -9,6 +9,9 @@ public class GameBehavior : MonoBehaviour
     public int maxItems = 4;
     public bool ShowWinScreen = false;
     private int _itemsCollected = 0;
+    public bool showHPtext = false;
+    public bool showBadHPtext = false;
+    public bool showSpeedtext = false;
 
     public int Items
     {
@@ -54,6 +57,21 @@ public class GameBehavior : MonoBehaviour
                 SceneManager.LoadScene(0);
                 Time.timeScale = 1.0f;
             }
+        }
+
+        if (showHPtext)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained 5 health!");
+        }
+
+        if (showSpeedtext)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained speed!");
+        }
+
+        if (showBadHPtext)
+        {
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have lost 7 health!");
         }
     }
 }

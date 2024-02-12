@@ -11,6 +11,7 @@ public class PlayerBehavior : MonoBehaviour
     public LayerMask groundLayer;
     public GameObject bullet;
     public float bulletSpeed = 100f;
+    public float SpeedIncrease = 40f;
 
     private float vInput;
     private float hInput;

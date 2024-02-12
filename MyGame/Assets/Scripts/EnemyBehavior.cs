@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    void onTriggerEnter(Collider other)
+    void onTriggerEnter(Collision other)
     {
-        if (other.name == "Player")
+        if (other.gameObject.name == "Player")
         {
             Debug.Log("Player detected - You are probably dead!");
         }
     }
     void onTriggerExit(Collider other)
     {
-        if (other.name == "Player")
+        if (other.gameObject.name == "Player")
         {
             Debug.Log("Player lost...");
         }

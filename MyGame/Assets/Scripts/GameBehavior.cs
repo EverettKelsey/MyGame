@@ -66,12 +66,37 @@ public class GameBehavior : MonoBehaviour
 
         if (showSpeedtext)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained speed!");
+            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You hea the sound of a door opening....");
         }
 
         if (showBadHPtext)
         {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have lost 7 health!");
         }
+    }
+
+    public void HealthDialog(float seconds)
+    {
+        showHPtext = true;
+        Invoke("EndDialog", seconds);
+    }
+
+    public void OpenDoor(float seconds)
+    {
+        showSpeedtext = true;
+        Invoke("EndDialog", seconds);
+    }
+
+    public void LostHealthDialog(float seconds)
+    {
+        showBadHPtext = true;
+        Invoke("EndDialog", seconds);
+    }
+
+    private void EndDialog()
+    {
+        showSpeedtext = false;
+        showBadHPtext = false;
+        showHPtext = false;
     }
 }

@@ -19,20 +19,8 @@ public class ItemBehaviorBad : MonoBehaviour
             Debug.Log("The gods hate you. You died!");
             gameManager.Items += 1;
             gameManager.HP -= 7;
-            gameManager.showBadHPtext = true;
+            gameManager.LostHealthDialog(timeShown);
             Destroy(this.transform.parent.gameObject);
-        }
-    }
-
-    void Update()
-    {
-        if (gameManager.showBadHPtext)
-        {
-            timeShown -= Time.deltaTime;
-            if (timeShown < 0.0f)
-            {
-                gameManager.showBadHPtext = false;
-            }
         }
     }
 }

@@ -19,6 +19,7 @@ public class PlayerBehavior : MonoBehaviour
     private CapsuleCollider _col;
     private bool doJump = false;
     private bool doShoot = false;
+    private float speedMultiplier;
 
     // Start is called before the first frame update
     void Start()
@@ -68,5 +69,17 @@ public class PlayerBehavior : MonoBehaviour
         Vector3 capsuleBottom = new Vector3(_col.bounds.center.x, _col.bounds.min.y, _col.bounds.center.z);
         bool grounded = Physics.CheckCapsule(_col.bounds.center, capsuleBottom, distanceToGround, groundLayer, QueryTriggerInteraction.Ignore);
         return grounded;
+    }
+
+    public void BoostSpeed(float multiplier, float seconds)
+    {
+        speedMultiplier = multiplier;
+        moveSpeed *= multiplier;
+        Invoke("endSpeedBoost", seconds);
+    }
+
+    private void endSpeedBoost()
+    {
+        moveSpeed /= speedMultiplier;
     }
 }

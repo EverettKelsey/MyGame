@@ -12,6 +12,7 @@ public class GameBehavior : MonoBehaviour
     public bool showHPtext = false;
     public bool showBadHPtext = false;
     public bool showSpeedtext = false;
+    public bool showLossScreen = false;
 
     public int Items
     {
@@ -40,22 +41,37 @@ public class GameBehavior : MonoBehaviour
         set
         {
                 _playerHP = value;
-                Debug.LogFormat("Lives: {0}", _playerHP);
+                if(_playerHP <= 0)
+                {
+                    showLossScreen = true;
+                    Time.timeScale = 0;
+                }
         }
+    }
+
+    void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
     }
 
     void OnGUI()
     {
-        GUI.Box(new Rect(20, 20, 150, 25), "Player Health:" + _playerHP);
-        GUI.Box(new Rect(20, 50, 150, 25), "Items Collected: " + _itemsCollected);
         GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), labelText);
 
         if (ShowWinScreen)
         {
             if (GUI.Button(new Rect(Screen.width/2 - 100, Screen.height/2 -50, 200, 100), "YOU WON!"))
             {
-                SceneManager.LoadScene(0);
-                Time.timeScale = 1.0f;
+                RestartLevel();
+            }
+        }
+
+        if (showLossScreen)
+        {
+            if (GUI.Button(new Rect(Screen.width / 2 -100, Screen.height / 2 - 50, 200, 100), "You lose..."))
+            {
+                RestartLevel();
             }
         }
 

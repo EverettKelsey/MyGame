@@ -20,12 +20,14 @@ public class PlayerBehavior : MonoBehaviour
     private bool doJump = false;
     private bool doShoot = false;
     private float speedMultiplier;
+    private GameBehavior _gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<CapsuleCollider>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
     }
     // Update is called once per frame
     void Update()
@@ -81,5 +83,13 @@ public class PlayerBehavior : MonoBehaviour
     private void endSpeedBoost()
     {
         moveSpeed /= speedMultiplier;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy 2" || collision.gameObject.name == "Enemy 3")
+        {
+            _gameManager.HP -= 1;
+        }
     }
 }

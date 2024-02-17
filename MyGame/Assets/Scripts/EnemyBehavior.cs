@@ -5,16 +5,42 @@ using UnityEngine.AI;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    public Transform player;
     public Transform patrolRoute;
     public List<Transform> locations;
 
     private int locationIndex = 0;
     private NavMeshAgent agent;
+    private int _lives = 3;
+
+    public int EnemyLives
+    {
+        get { return _lives; }
+
+        private set
+        {
+            _lives = value;
+            if (_lives <= 0)
+            {
+                Destroy(this.gameObject);
+                Debug.Log("Enemy down");
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Bullet(Clone)")
+        {
+            EnemyLives -= 1;
+        }
+    }
 
     void onTriggerEnter(Collision other)
     {
         if (other.gameObject.name == "Player")
         {
+            agent.destination = player.position;
             Debug.Log("Player detected - You are probably dead!");
         }
     }
@@ -29,6 +55,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
         InitializePatrolRoute();
         MoveToNextPatrolLocation();
     }
@@ -43,7 +70,7 @@ public class EnemyBehavior : MonoBehaviour
 
     void InitializePatrolRoute()
     {
-        foreach (Transform child in  patrolRoute)
+        foreach (Transform child in patrolRoute)
         {
             locations.Add(child);
         }

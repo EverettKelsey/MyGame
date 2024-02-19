@@ -21,6 +21,7 @@ public class PlayerBehavior : MonoBehaviour
     private bool doShoot = false;
     private float speedMultiplier;
     private GameBehavior _gameManager;
+    private HealthText _health;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class PlayerBehavior : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<CapsuleCollider>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
+        _health = GameObject.Find("Image").GetComponent<HealthText>();
     }
     // Update is called once per frame
     void Update()
@@ -90,6 +92,7 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy 2" || collision.gameObject.name == "Enemy 3")
         {
             _gameManager.HP -= 1;
+            _health.ImageChange();
         }
     }
 }

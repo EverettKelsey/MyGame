@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemDisplay : MonoBehaviour
+public class ItemsDisplay : MonoBehaviour
 {
     public Text itemsText;
     private GameBehavior _gameManager;
@@ -16,6 +16,6 @@ public class ItemDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        itemsText.text = "Items Collected : " + _gameManager.Items;
+        itemsText.text = "" + _gameManager.Items;
     }
 }

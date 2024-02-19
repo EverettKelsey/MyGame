@@ -12,7 +12,6 @@ public class GameBehavior : MonoBehaviour
     public bool showHPtext = false;
     public bool showBadHPtext = false;
     public bool showSpeedtext = false;
-    public bool showLossScreen = false;
 
     public int Items
     {
@@ -24,7 +23,7 @@ public class GameBehavior : MonoBehaviour
                 if (_itemsCollected >= maxItems)
                 {
                     labelText = "You've found all the items!";
-                    ShowWinScreen = true;
+                    SceneManager.LoadScene("YouWin");
                     Time.timeScale = 0f;
                 }
                 else
@@ -43,38 +42,13 @@ public class GameBehavior : MonoBehaviour
                 _playerHP = value;
                 if(_playerHP <= 0)
                 {
-                    showLossScreen = true;
-                    Time.timeScale = 0;
+                    SceneManager.LoadScene("GameOver");
                 }
         }
     }
 
-    void RestartLevel()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
-    }
-
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), labelText);
-
-        if (ShowWinScreen)
-        {
-            if (GUI.Button(new Rect(Screen.width/2 - 100, Screen.height/2 -50, 200, 100), "YOU WON!"))
-            {
-                RestartLevel();
-            }
-        }
-
-        if (showLossScreen)
-        {
-            if (GUI.Button(new Rect(Screen.width / 2 -100, Screen.height / 2 - 50, 200, 100), "You lose..."))
-            {
-                RestartLevel();
-            }
-        }
-
         if (showHPtext)
         {
             GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained 5 health!");

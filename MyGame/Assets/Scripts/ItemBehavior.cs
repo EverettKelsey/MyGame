@@ -18,7 +18,7 @@ public class ItemBehavior : MonoBehaviour
         {
             Debug.Log("The gods have had mercy on you! You've gained health.");
             gameManager.Items += 1;
-            gameManager.HP += 5;
+            gameManager.HP += (10 - gameManager.HP);
             gameManager.HealthDialog(timeShown);
             Destroy(this.transform.parent.gameObject);
         }

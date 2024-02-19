@@ -22,9 +22,7 @@ public class GameBehavior : MonoBehaviour
                 Debug.LogFormat("Items: {0}", _itemsCollected);
                 if (_itemsCollected >= maxItems)
                 {
-                    labelText = "You've found all the items!";
                     SceneManager.LoadScene("YouWin");
-                    Time.timeScale = 0f;
                 }
                 else
                 {

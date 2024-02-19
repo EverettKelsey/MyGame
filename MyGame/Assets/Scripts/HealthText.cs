@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class HealthText : MonoBehaviour
 {
+    /*
     public Image ten;
     public Sprite[] spriteArray;
     private GameBehavior _gameManager;
@@ -24,4 +25,19 @@ public class HealthText : MonoBehaviour
     {
         ten.sprite = spriteArray[_gameManager.HP - 1];
     }
+    */
+    public Text healthText;
+    private GameBehavior _gameManager;
+    // Start is called before the first frame update
+    void Start()
+    {
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        healthText.text = "" + _gameManager.HP;
+    }
+
 }

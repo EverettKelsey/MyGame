@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthDisplay : MonoBehaviour
+public class ItemsText : MonoBehaviour
 {
-    public Text healthText;
+    public Image zero;
+    public Sprite[] spriteArray;
     private GameBehavior _gameManager;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,11 @@ public class HealthDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "" + _gameManager.HP;
+        
+    }
+
+    public void ImageChange()
+    {
+        zero.sprite = spriteArray[_gameManager.Items - 1];
     }
 }

@@ -1,27 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float rotateSpeed = 75f;
+    public float sensitivity = 5f;
     public float jumpVelocity = 5f;
     public float distanceToGround = 0.1f;
     public LayerMask groundLayer;
     public GameObject bullet;
     public float bulletSpeed = 100f;
     public float SpeedIncrease = 40f;
+    public Vector2 turn;
 
     private float vInput;
-    private float hInput;
     private Rigidbody _rb;
     private CapsuleCollider _col;
     private bool doJump = false;
     private bool doShoot = false;
     private float speedMultiplier;
     private GameBehavior _gameManager;
-    private HealthText _health;
 
     // Start is called before the first frame update
     void Start()
@@ -29,13 +29,14 @@ public class PlayerBehavior : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _col = GetComponent<CapsuleCollider>();
         _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
-        _health = GameObject.Find("Image").GetComponent<HealthText>();
     }
     // Update is called once per frame
     void Update()
     {
+        turn.x += Input.GetAxis("Mouse X") * sensitivity;
+        turn.y += Input.GetAxis("Mouse Y") * sensitivity;
+        transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
         vInput = Input.GetAxis("Vertical") * moveSpeed;
-        hInput = Input.GetAxis("Horizontal") * rotateSpeed;
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             doJump = true;
@@ -47,6 +48,7 @@ public class PlayerBehavior : MonoBehaviour
         }
 
     }
+
     void FixedUpdate()
     {
         if (doJump)
@@ -62,10 +64,7 @@ public class PlayerBehavior : MonoBehaviour
             bulletRb.velocity = this.transform.forward * bulletSpeed;
             doShoot = false;
         }
-        Vector3 rotation = Vector3.up * hInput;
-        Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
         _rb.MovePosition(this.transform.position + this.transform.forward * vInput * Time.fixedDeltaTime);
-        _rb.MoveRotation(_rb.rotation * angleRot);
     }
 
     private bool IsGrounded()
@@ -92,7 +91,6 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy 2" || collision.gameObject.name == "Enemy 3")
         {
             _gameManager.HP -= 1;
-            _health.ImageChange();
         }
     }
 }

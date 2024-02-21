@@ -5,10 +5,12 @@ using UnityEngine;
 public class ItemBehavior : MonoBehaviour
 {
     public GameBehavior gameManager;
+    private ItemsText itemstext;
     public float timeShown = 5.0f;
 
     void Start()
     {
+        itemstext = GameObject.Find("ItemsNumbers").GetComponent<ItemsText>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
     }
 

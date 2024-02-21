@@ -27824,8 +27824,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1432777242}
   - component: {fileID: 1432777245}
-  - component: {fileID: 1432777244}
   - component: {fileID: 1432777243}
+  - component: {fileID: 1432777244}
   m_Layer: 5
   m_Name: ItemNumbers
   m_TagString: Untagged
@@ -27842,14 +27842,14 @@ RectTransform:
   m_GameObject: {fileID: 1432777241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.31757805, y: 0.31757805, z: 0.31757805}
   m_Children: []
   m_Father: {fileID: 1384793447}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -280.5, y: 284.6}
+  m_AnchoredPosition: {x: -121, y: 294}
   m_SizeDelta: {x: 851.7918, y: 427.5578}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432777243
@@ -27864,12 +27864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2990ce3a8f52a1e45912d5eac4ee0888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zero: {fileID: 1432777244}
-  spriteArray:
-  - {fileID: 21300000, guid: a4a88edc6471f964cb4d811c1be1c62c, type: 3}
-  - {fileID: 21300000, guid: 864e642f5a1d97848935aedfa416f13f, type: 3}
-  - {fileID: 21300000, guid: 3fb925a54e4306243a81cd32e99ccc4b, type: 3}
-  - {fileID: 21300000, guid: 17c9ed700f930e645b215bcaf0396fc2, type: 3}
+  itemText: {fileID: 1432777244}
 --- !u!114 &1432777244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27879,27 +27874,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1432777241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.86274517, g: 0.6509804, b: 0.08627451, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a4a88edc6471f964cb4d811c1be1c62c, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 300
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 0
 --- !u!222 &1432777245
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36000,7 +35999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baea698c68607ad47a39ac3b3f0ed752, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthText: {fileID: 0}
+  healthText: {fileID: 1762943980}
 --- !u!114 &1762943980
 MonoBehaviour:
   m_ObjectHideFlags: 0

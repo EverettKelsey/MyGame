@@ -28029,7 +28029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f9e027c6a3bbe4fb95d3b9177dcee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 424806785}
   timeShown: 5
 --- !u!1 &1459783488
 GameObject:
@@ -49245,7 +49245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e729d27754534ae4594cd3f12f401c65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 424806785}
   timeShown: 5
 --- !u!1001 &4049244569263830670
 PrefabInstance:
@@ -49483,7 +49483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a13343ae7c30824c8ef8288156e369a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 424806785}
   BoostMultiplier: 5
   BoostSeconds: 5
 --- !u!114 &8808340931012056792

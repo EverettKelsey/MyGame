@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerBehavior : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public float sensitivity = 5f;
+    public float sensitivity = 2f;
     public float jumpVelocity = 5f;
     public float distanceToGround = 0.1f;
     public LayerMask groundLayer;
@@ -15,7 +15,6 @@ public class PlayerBehavior : MonoBehaviour
     public float SpeedIncrease = 40f;
     public Vector2 turn;
 
-    private float vInput;
     private Rigidbody _rb;
     private CapsuleCollider _col;
     private bool doJump = false;
@@ -36,7 +35,6 @@ public class PlayerBehavior : MonoBehaviour
         turn.x += Input.GetAxis("Mouse X") * sensitivity;
         turn.y += Input.GetAxis("Mouse Y") * sensitivity;
         transform.localRotation = Quaternion.Euler(-turn.y, turn.x, 0);
-        vInput = Input.GetAxis("Vertical") * moveSpeed;
         if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             doJump = true;
@@ -45,6 +43,22 @@ public class PlayerBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             doShoot = true;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.S))
+        { 
+            transform.Translate(-1 * Vector3.forward * Time.deltaTime * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.A)) { 
+            transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.right * Time.deltaTime * moveSpeed);
         }
 
     }
@@ -64,7 +78,6 @@ public class PlayerBehavior : MonoBehaviour
             bulletRb.velocity = this.transform.forward * bulletSpeed;
             doShoot = false;
         }
-        _rb.MovePosition(this.transform.position + this.transform.forward * vInput * Time.fixedDeltaTime);
     }
 
     private bool IsGrounded()

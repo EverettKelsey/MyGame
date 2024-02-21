@@ -10,7 +10,6 @@ public class ItemBehavior : MonoBehaviour
 
     void Start()
     {
-        itemstext = GameObject.Find("ItemsNumbers").GetComponent<ItemsText>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameBehavior>();
     }
 

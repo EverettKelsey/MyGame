@@ -49,7 +49,10 @@ public class GameBehavior : MonoBehaviour
     {
         if (showHPtext)
         {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained 5 health!");
+            if (HP == 10)
+                GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You are already at max health!");
+            else 
+                GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained 5 health!");
         }
 
         if (showSpeedtext)

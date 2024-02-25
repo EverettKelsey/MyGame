@@ -1,4 +1,4 @@
-﻿﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -56,10 +56,7 @@ public class GameBehavior : MonoBehaviour
         if (speedText.enabled == true)
             speedText.enabled = false;
         hpText.enabled = true;
-        if (HP == 10)
-            hpText.text = "You are already at max health!";
-        else
-            hpText.text = "You have gained 5 health!";
+        hpText.text = "You have gained " + (10 - HP) + " health!";
         Invoke("EndDialog", seconds);
     }
 

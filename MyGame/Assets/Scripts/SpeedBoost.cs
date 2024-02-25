@@ -23,7 +23,7 @@ public class SpeedBoost : MonoBehaviour
 
             PlayerBehavior Player = collision.gameObject.GetComponent<PlayerBehavior>();
             Player.BoostSpeed(BoostMultiplier, BoostSeconds);
-            gameManager.OpenDoor(timeShown);
+            gameManager.Speed(timeShown);
         }
     }
 

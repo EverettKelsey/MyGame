@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameBehavior : MonoBehaviour
 {
-    public string labelText = "Collect all 4 items and win your freedom!";
     public int maxItems = 4;
     public bool ShowWinScreen = false;
     private int _itemsCollected = 0;
-    public bool showHPtext = false;
-    public bool showBadHPtext = false;
-    public bool showSpeedtext = false;
+    public Text crystalText;
+    public Text hpText;
+    public Text speedText;
+    public float timeShown = 5.0f;
 
+    void Start()
+    {
+        hpText.enabled = false;
+        speedText.enabled = false;
+    }
     public int Items
     {
         get { return _itemsCollected; }
@@ -26,7 +32,7 @@ public class GameBehavior : MonoBehaviour
                 }
                 else
                 {
-                    labelText = "Item found, only " + (maxItems - _itemsCollected) + " more to go!";
+                    CrystalDialog(timeShown);
                 }
         }
     }
@@ -45,49 +51,51 @@ public class GameBehavior : MonoBehaviour
         }
     }
 
-    void OnGUI()
-    {
-        if (showHPtext)
-        {
-            if (HP == 10)
-                GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You are already at max health!");
-            else 
-                GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have gained 5 health!");
-        }
-
-        if (showSpeedtext)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You hea the sound of a door opening....");
-        }
-
-        if (showBadHPtext)
-        {
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 80, 300, 80), "You have lost 7 health!");
-        }
-    }
-
     public void HealthDialog(float seconds)
     {
-        showHPtext = true;
+        if (speedText.enabled == true)
+            speedText.enabled = false;
+        hpText.enabled = true;
+        if (HP == 10)
+            hpText.text = "You are already at max health!";
+        else
+            hpText.text = "You have gained 5 health!";
         Invoke("EndDialog", seconds);
     }
 
-    public void OpenDoor(float seconds)
+    public void Speed(float seconds)
     {
-        showSpeedtext = true;
+        if(hpText.enabled == true)
+            hpText.enabled = false;
+        speedText.enabled = true;
+        speedText.text = "You feel adrenaline course through your veins!";
         Invoke("EndDialog", seconds);
     }
 
     public void LostHealthDialog(float seconds)
     {
-        showBadHPtext = true;
+        if (speedText.enabled == true)
+            speedText.enabled = false;
+        hpText.enabled = true;
+        hpText.text = "You have lost 3 health!";
+        Invoke("EndDialog", seconds);
+    }
+
+    public void CrystalDialog(float seconds)
+    {
+        if (speedText.enabled == true)
+            speedText.enabled = false;
+        if (hpText.enabled == true)
+            hpText.enabled = false;
+        crystalText.text = "Crystal found, only " + (maxItems - _itemsCollected) + " more to go!";
         Invoke("EndDialog", seconds);
     }
 
     private void EndDialog()
     {
-        showSpeedtext = false;
-        showBadHPtext = false;
-        showHPtext = false;
+        hpText.enabled = false;
+        speedText.enabled = false;
+        crystalText.enabled = false;
     }
+
 }

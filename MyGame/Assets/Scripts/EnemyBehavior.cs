@@ -36,7 +36,7 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    void onTriggerEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
         {
@@ -44,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour
             Debug.Log("Player detected - You are probably dead!");
         }
     }
-    void onTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.gameObject.name == "Player")
         {

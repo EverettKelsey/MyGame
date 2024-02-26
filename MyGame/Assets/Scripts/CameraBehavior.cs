@@ -11,6 +11,7 @@ public class CameraBehavior : MonoBehaviour
     void Start()
     {
         target = GameObject.Find("Player").transform;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 void LateUpdate()

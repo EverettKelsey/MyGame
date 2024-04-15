@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class Control : MonoBehaviour
 {
-    //public GameObject Castle;
-    //public GameObject rules;
+    public static bool GameIsPaused = false;
+    public GameObject pauseMenuUI;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //rules.SetActive(false);
     }
     public void NextScene()
     {
@@ -21,15 +21,42 @@ public class Control : MonoBehaviour
 
     public void Rules()
     {
-        //Castle.SetActive(false);
-        //rules.SetActive(true);
         SceneManager.LoadScene("Rules");
     }
 
     public void Home()
     {
-        //Castle.SetActive(true);
-        //rules.SetActive(false);
         SceneManager.LoadScene("Start");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(GameIsPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
+        }
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }

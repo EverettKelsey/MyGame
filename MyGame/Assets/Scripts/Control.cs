@@ -3,11 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class Control : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+
+    [SerializeField] AudioClip clip;
+    public void OnMouseUp()
+    {
+        StartCoroutine(DelayedLoad());
+    }
+
+    IEnumerator DelayedLoad()
+    {
+        GetComponent<AudioSource>().PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length);
+        if (gameObject.name == "Rules")
+        {
+            Rules();
+        }
+        if (gameObject.name == "Start")
+        {
+            NextScene();
+        }
+        if (gameObject.name == "Back")
+        {
+            Home();
+        }
+        if (gameObject.name == "ResumeButton")
+        {
+            Resume();
+        }
+        if (gameObject.name == "MainMenu")
+        {
+            Home();
+        }
+    }
 
     void Start()
     {

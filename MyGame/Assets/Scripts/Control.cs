@@ -40,6 +40,10 @@ public class Control : MonoBehaviour
         {
             Home();
         }
+        if (gameObject.name == "Button")
+        {
+            NextScene();
+        }
     }
 
     void Start()

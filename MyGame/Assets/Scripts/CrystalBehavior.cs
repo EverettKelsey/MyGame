@@ -16,10 +16,16 @@ public class CrystalBehavior : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             crystalText.enabled = true;
-            Destroy(this.transform.gameObject);
+            StartCoroutine(DelayedLoad());
             _gameManager.Items += 1;
-            GetComponent<AudioSource>().PlayOneShot(clip);
         }
+    }
+
+    IEnumerator DelayedLoad()
+    {
+        GetComponent<AudioSource>().PlayOneShot(clip);
+        yield return new WaitForSeconds(clip.length);
+        Destroy(this.transform.gameObject);
     }
     // Start is called before the first frame update
     void Start()

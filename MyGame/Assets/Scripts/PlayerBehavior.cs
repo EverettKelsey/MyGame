@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerBehavior : MonoBehaviour
     private bool doShoot = false;
     private float speedMultiplier;
     private GameBehavior _gameManager;
+    [SerializeField] AudioClip[] clip;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,7 @@ public class PlayerBehavior : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             doShoot = true;
+            GetComponent<AudioSource>().PlayOneShot(clip[0]);
         }
 
         if (Input.GetKey(KeyCode.W))
@@ -104,6 +107,7 @@ public class PlayerBehavior : MonoBehaviour
         if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy 2" || collision.gameObject.name == "Enemy 3")
         {
             _gameManager.HP -= 1;
+            GetComponent<AudioSource>().PlayOneShot(clip[1]);
         }
     }
 }

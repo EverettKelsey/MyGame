@@ -32,11 +32,11 @@ public class Control : MonoBehaviour
         {
             Home();
         }
-        if (gameObject.name == "ResumeButton")
+        if (gameObject.name == "Resume")
         {
             Resume();
         }
-        if (gameObject.name == "MainMenu")
+        if (gameObject.name == "Menu")
         {
             Home();
         }

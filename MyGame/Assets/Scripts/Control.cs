@@ -32,14 +32,6 @@ public class Control : MonoBehaviour
         {
             Home();
         }
-        if (gameObject.name == "Resume")
-        {
-            Resume();
-        }
-        if (gameObject.name == "Menu")
-        {
-            Home();
-        }
         if (gameObject.name == "Button")
         {
             NextScene();

@@ -2125,7 +2125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b9414b0aa89334f917d73a7c16e670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1648836064}
   clip: {fileID: 8300000, guid: 62bf68591c63c1f46ad8b72b6ebdbb9b, type: 3}
 --- !u!114 &1638488698
 MonoBehaviour:
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b9414b0aa89334f917d73a7c16e670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 0}
+  pauseMenuUI: {fileID: 1648836064}
   clip: {fileID: 8300000, guid: 62bf68591c63c1f46ad8b72b6ebdbb9b, type: 3}
 --- !u!114 &1999089810
 MonoBehaviour:
